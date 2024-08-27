@@ -1,0 +1,39 @@
+﻿@page
+@using System.Globalization
+@model IndexModel
+@{
+    ViewData["Title"] = "Car List";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Car List</h1>
+</div>
+
+<hr class="my-4">
+
+
+<div class="d-flex justify-content-end mb-3">
+    <a class="btn btn-dark" asp-page="/Cars/Create">Add New Car</a>
+</div>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Brand</th>
+        <th>Model</th>
+        <th>Year</th>
+        <th>Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var car in Model.Cars)
+    {
+        <tr>
+            <td>@car.Brand</td>
+            <td>@car.Model</td>
+            <td>@car.Year</td>
+            <td>@car.Price.ToString("C", new CultureInfo("en-US"))</td>
+        </tr>
+    }
+    </tbody>
+</table>
